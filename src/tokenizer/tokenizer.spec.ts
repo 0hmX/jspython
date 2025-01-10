@@ -112,6 +112,13 @@ describe('Tokenizer => ', () => {
     expect(tokens[4][0]).toBe('d');
   });
 
+  it('return -1', async () => {
+    const tokens = new Tokenizer().tokenize('return -1');
+    expect(tokens.length).toBe(2);
+    expect(tokens[0][0]).toBe('return');
+    expect(tokens[1][0]).toBe(-1);
+  });
+
   /*
   it('3 - -2', async () => {
     let tokens = new Tokenizer().tokenize('3 - -2')

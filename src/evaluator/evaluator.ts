@@ -60,7 +60,7 @@ export class Evaluator {
       }
       if (node.type === 'import') {
         // we can't use it here, because loader has to be promise
-        throw new Error(`Import is not support with 'eval'. Use method 'evalAsync' instead`);
+        throw new Error(`Import is not supported with 'eval'. Use method 'evalAsync' instead`);
       }
       try {
         lastResult = this.evalNode(node, blockContext);

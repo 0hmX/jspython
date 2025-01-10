@@ -278,6 +278,7 @@ export class Tokenizer {
       const prevToken = currentTokens.length !== 0 ? currentTokens[currentTokens.length - 1] : null;
       return (
         prevToken === null ||
+        getTokenValue(prevToken) === 'return' ||
         (getTokenType(prevToken) === TokenTypes.Operator && getTokenValue(prevToken) !== ')')
       );
     } else if (symbol === '.' && this.parseNumberOrNull(this.tokenText) !== null) {

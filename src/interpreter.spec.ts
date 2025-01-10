@@ -133,7 +133,7 @@ describe('Interpreter', () => {
   });
 
   it('json ignore last comma', () => {
-    expect(JSON.stringify(e.eval('[{a:1,}, {a:2},]'))).toBe(JSON.stringify([{ a: 1, }, { a: 2 },]));
+    expect(JSON.stringify(e.eval('[{a:1,}, {a:2},]'))).toBe(JSON.stringify([{ a: 1 }, { a: 2 }]));
   });
 
   [{ a: 1 }, { a: 2 }];
@@ -995,5 +995,20 @@ describe('Interpreter', () => {
     expect(interpreter.eval(script)).toBe(11);
   });
 
+  it('return -1', async () => {
+    const interpreter = Interpreter.create();
+
+    const script = `return -1`;
+    expect(await interpreter.evalAsync(script)).toBe(-1);
+    expect(interpreter.eval(script)).toBe(-1);
+  });
+
+  it('return -3.14', async () => {
+    const interpreter = Interpreter.create();
+
+    const script = `return -3.14`;
+    expect(await interpreter.evalAsync(script)).toBe(-3.14);
+    expect(interpreter.eval(script)).toBe(-3.14);
+  });
   //
 });
